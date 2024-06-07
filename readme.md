@@ -9,7 +9,11 @@ If you open the emulator normally, it will execute the normal game. If you use "
 CONTROLS:
 
 1 - P1 start
+
 6 - Insert coin
+
 A - Move left
+
 D - Move right
+
 ,(comma) - Shoot
