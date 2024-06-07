@@ -4,7 +4,9 @@ The folder rbin contains a release build. Use build.bat to create a debug build 
 
 The emulator expects a space invaders rom called "invaders.rom". If you find the rom split in multiple files (.h, .g, .f, .e) place them alongside the exe and execute the merge_roms.bat to create a .rom file.
 
-If you open the emulator normally, it will execute the normal game. If you use "tests" as argument, it will run the CPU tests instead.
+If you open the emulator normally, it will execute the rom. If you use "tests" as argument, it will run the CPU tests instead.
+
+invaders.sound is a file containing the .wav sound files from http://www.brentradio.com/SpaceInvaders.htm
 
 CONTROLS:
 
