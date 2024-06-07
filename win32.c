@@ -899,9 +899,15 @@ int WINAPI WinMain(HINSTANCE hinstance,
 		renderer = (platform_renderer *)d3d11_init(hwnd);
 		f_renderer_draw = d3d11_draw;
 		f_renderer_swap_buffers = d3d11_swap_buffers;
+
+		if(!renderer)
+		{
+			gprintf("FAILED TO INITIALIZE THE D3D11 RENDERER. SWITCHING TO SOFTWARE.");
+			render_api = render_api_software;
+		}
 	}
 	//software
-	else
+	if(render_api == render_api_software)
 	{
 		//init_software_renderer
 

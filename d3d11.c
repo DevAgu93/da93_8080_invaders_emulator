@@ -143,7 +143,7 @@ d3d11_init(
 	unsigned int back_buffer_w = INV_SCREENW;
 	unsigned int back_buffer_h = INV_SCREENH;
 
-    d3d11_device *direct_device  = win32_alloc(sizeof(d3d11_device));
+    d3d11_device direct_device = {0};
 
     IDXGISwapChain1     *swap_chain1;
     ID3D11Device        *device;
@@ -233,9 +233,9 @@ d3d11_init(
 
 	//////////////////////////////////////////////////////////////
 
-   direct_device->swap_chain        = swap_chain1; 
-   direct_device->device           = device;
-   direct_device->device_context   = device_context;
+   direct_device.swap_chain        = swap_chain1; 
+   direct_device.device           = device;
+   direct_device.device_context   = device_context;
 
    /////////////////////////////////////////////////////////
    
@@ -388,19 +388,19 @@ d3d11_init(
 
    ///////////////////////////////////////////////////////////////////////////////
 
-   direct_device->vertex_buffer      = vertex_buffer;
+   direct_device.vertex_buffer      = vertex_buffer;
 
    d3d11_create_canvas_texture(
 		   back_buffer_w,
 		   back_buffer_h,
 		   device,
 		   device_context,
-		   &direct_device->canvas_texture,
-		   &direct_device->canvas_texture_view);
+		   &direct_device.canvas_texture,
+		   &direct_device.canvas_texture_view);
    
 
    //set default display buffer
-   direct_device->frame_buffer = back_buffer;
+   direct_device.frame_buffer = back_buffer;
    /////////////////////////////////////////////////////
 
    device_context->lpVtbl->OMSetRenderTargets(device_context ,1, &back_buffer, 0);
@@ -498,7 +498,7 @@ d3d11_init(
 			   ID3D11VertexShader *vs_default;
 
 
-			   RR( direct_device->device->lpVtbl->CreateVertexShader(direct_device->device, 
+			   RR( direct_device.device->lpVtbl->CreateVertexShader(direct_device.device, 
 					   vshader_blob->lpVtbl->GetBufferPointer(vshader_blob),
 					   vshader_blob->lpVtbl->GetBufferSize(vshader_blob),
 					   0,
@@ -528,7 +528,7 @@ d3d11_init(
 			   ID3D11InputLayout *input_layout;
 
 			   unsigned int input_count = sizeof(vt_out) / sizeof(D3D11_INPUT_ELEMENT_DESC);
-			   result = direct_device->device->lpVtbl->CreateInputLayout(direct_device->device,
+			   result = direct_device.device->lpVtbl->CreateInputLayout(direct_device.device,
 					   vt_out,
 					   input_count, //parameters count
 					   vshader_blob->lpVtbl->GetBufferPointer(vshader_blob),
@@ -536,11 +536,14 @@ d3d11_init(
 					   &input_layout);
 
 			   ASSERT(result == S_OK);
-			   direct_device->device_context->lpVtbl->IASetInputLayout(direct_device->device_context, input_layout);
+			   direct_device.device_context->lpVtbl->IASetInputLayout(direct_device.device_context, input_layout);
    }
    //////////////////////////////////////////////////////////////
 
-   return(direct_device); 
+   d3d11_device *direct_devicem  = win32_alloc(sizeof(d3d11_device));
+   *direct_devicem = direct_device;
+
+   return(direct_devicem);
 }
 
 static void
