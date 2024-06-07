@@ -1,0 +1,17 @@
+.\bin\
+.\raytrace\
+.\not_included\
+.\bin\not_included\
+bin/
+not_included/
+_.git/
+.vs
+.vs\
+.sln
+.pdb
+.png
+.bmp
+.jpg
+.mp4
+.txt
+TODO.*

@@ -1,0 +1,2 @@
+La secuencia de instrucciones te da el opcode y los parametros que causaron la falla. Para las instrucciones de 1-2 bytes los el resto se llena con NOP (00) opcodes.
+The instruction sequence above gives the opcode and operands that caused the failure. For 1- and 2-byte instructions the remaining bytes are padded with NOP ($00) opcodes.
