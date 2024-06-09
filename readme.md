@@ -19,3 +19,28 @@ A - Move left
 D - Move right
 
 ,(comma) - Shoot
+
+Resources used :
+
+CPU TESTS:
+https://altairclone.com/downloads/cpu_tests/
+
+Compared results for tests:
+https://www.reddit.com/r/C_Programming/comments/8loz4p/heres_a_cycleaccurate_intel_8080_emulator_i_wrote/
+
+Audio files:
+http://www.brentradio.com/SpaceInvaders.htm
+
+8080 Programmers manual (download link)
+https://altairclone.com/downloads/manuals/8080%20Programmers%20Manual.pdf
+
+8080 - 8085 programmers manual (download link)
+https://altairclone.com/downloads/manuals/8080-8085%20Programmers%20Manual.pdf
+
+Emulator 101, followed to a certain point.
+http://www.emulator101.com/
+
+Space invaders Hardware, code, RAM use:
+https://computerarcheology.com/Arcade/SpaceInvaders/
+
+TODO: Add information
